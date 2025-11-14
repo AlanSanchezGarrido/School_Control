@@ -1,4 +1,4 @@
-import studentsDaos from "../DAOs/students.daos.js";
+import studentsDaos from "../daos/students.daos.js";
 const studentsControllers = {};
 studentsControllers.getAll = (req,res) =>{
 //aqui le vamos a pedir los datos de los estudiantes al dao
