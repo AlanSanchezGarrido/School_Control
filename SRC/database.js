@@ -1,6 +1,4 @@
 //cadena de coneccion e inicializamos la conexion con mongo db, que es moongoiose
-
-
 //importamos mongoose
 import  mongoose from 'mongoose';
 //creamos la cadena de coneccion

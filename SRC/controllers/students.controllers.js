@@ -4,7 +4,7 @@ studentsControllers.getAll = (req,res) =>{
 //aqui le vamos a pedir los datos de los estudiantes al dao
 studentsDaos.getAll()
     .then(students => {
-        res.render( "index.ejs", {students} )
+        res.render( "index.ejs", {students} );
 
     })
     .catch(err => {
@@ -82,10 +82,6 @@ studentsControllers.deleteOne = async (req, res) => {
             });
         });
     
-};
-
-                                        
-
-        
+};        
 export default studentsControllers;
     
