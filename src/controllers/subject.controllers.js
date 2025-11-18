@@ -4,10 +4,7 @@ const subjectControllers = {};
 subjectControllers.getAll = (req, res) => {
     subjectDaos.getAll()
     .then(subjectList => {
-        console.log(subjectList);
-        res.json({
-            data:subjectList
-        })
+        res.render( "teachers.ejs", {students} );
     })
     .catch(err => {
     res.status(500).json({

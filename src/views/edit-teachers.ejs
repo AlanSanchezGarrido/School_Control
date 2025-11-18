@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    >
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+      integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-icons@1.13.14/iconfont/material-icons.min.css">
+
+    <title>school Control</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <!--Aqui va la navbar-->
+        Copy to BlackBox
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">School Control</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </li>
+              </ul>
+              <form class="d-flex" role="search">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+                <button class="btn btn-outline-success" type="submit">
+                  Search
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="card">
+            </div>
+            <div class="card-body">
+              <form action="/api/teachers/updateOne/<%= teachers.teacher_id %>" method="POST">
+                <div class="row">
+                  <div class="col-lg-6 mb-3">
+                    <label for="txt_teachersId" class="form-label">Número de control</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="txt_teachersId"
+                      name="teacher_id"
+                      value="<%= teachers.teacher_id %>"
+                      readonly
+                    >
+                  </div>
+                  <div class="col-lg-6 mb-3">
+                    <label for="txtName" class="form-label">Nombre</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="txtName"
+                      name="name"
+                      value="<%= teachers.name %>"
+                      required
+                    >
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-6 mb-3">
+                    <label for="txtLastName" class="form-label">Apellido Paterno</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="txtLastName"
+                      name="lastname"
+                      value="<%= teachers.lastname %>"
+                      required
+                    >
+                  </div>
+                  <div class="col-lg-6 mb-3">
+                    <label for="txtAge" class="form-label">Edad</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="txtAge"
+                      name="age"
+                      value="<%= teachers.age %>"
+                      required
+                    >
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-6 mb-3">
+                    <label for="txtemail" class="form-label">Correo Electrónico</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="txtemail"
+                      name="email"
+                      value="<%= teachers.email %>"
+                      required
+                    >
+                  </div>
+                  <div class="col-lg-6 mb-3">
+                    <label for="txtarea" class="form-label">Área de trabajo</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="txtarea"
+                      name="area"
+                      value="<%= teachers.area %>"
+                      required
+                    >
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-6 mb-3">
+                    <label for="txtSalary" class="form-label">Salario</label>
+                    <input
+                      type="number"
+                      step="0.01"
+                      class="form-control"
+                      id="txtSalary"
+                      name="salary"
+                      value="<%= teachers.salary %>"
+                      required
+                    >
+                  </div>
+                  <div class="col-lg-6 mb-3">
+                    <label for="txtyears" class="form-label">Años de servicio</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="txtyears"
+                      name="years_of_service"
+                      value="<%= teachers.years_of_service %>"
+                      required
+                    >
+                  </div>
+                </div>
+
+                <div class="row mt-3">
+                  <div class="col-lg-12">
+                    <button type="submit" class="btn btn-success me-2">
+                      <i class="material-icons align-middle" style="font-size: 18px;">save</i>
+                      Guardar Cambios
+                    </button>
+                    <a href="/api/teachers/getAll" class="btn btn-secondary">
+                      <i class="material-icons align-middle" style="font-size: 18px;">cancel</i>
+                      Cancelar
+                    </a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

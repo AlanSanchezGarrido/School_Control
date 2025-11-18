@@ -5,60 +5,56 @@ const teachersControllers = {};
 teachersControllers.getAll = (req, res) => {
     teachersDaos.getAll()
     .then(teachersList => {
-        res.json({
-            data:teachersList
-        })
+        res.render("teachers-index.ejs", { teachers: teachersList });
     })
     .catch(err => {
-    res.status(500).json({
-        message:"An error has occurred",
-        error: err
-    });
-});
-}
-teachersControllers.getOne =(req,res)=>{
-    teachersDaos.getOne(req.params.teacher_id)
-    .then((teachers)=>{
-        if(teachers){
-           res.json({data:teachers }); 
-        }else{
-            res.status(404).json({
-                message:"Student not found"
-            });
-        }
-    })
-    .catch(err=>{
         res.status(500).json({
-            message:"An error has occurred",
+            message: "An error has occurred",
             error: err
         });
     });
 };
 
-teachersControllers.insertOne =async (req,res)=>{
-    teachersDaos.insertOne(req.body)
-    .then((newTeacher)=>{
-        res.status(201).json({
-            message:"Student created successfully",
-            data: newTeacher
-        });
+teachersControllers.getOne = (req, res) => {
+    teachersDaos.getOne(req.params.teacher_id)
+    .then((teachers) => {
+        if (teachers) {
+            res.render("edit-teachers.ejs", { teachers });
+        } else {
+            res.status(404).json({
+                message: "Teacher not found"
+            });
+        }
     })
-    .catch(err=>{
-        res.status(500).json({ message:"An error has occurred"});
+    .catch(err => {
+        res.status(500).json({
+            message: "An error has occurred",
+            error: err
+        });
     });
 };
 
-teachersControllers  .updateOne = async (req, res) => {
+teachersControllers.insertOne = async (req, res) => {
+    teachersDaos.insertOne(req.body)
+    .then((newTeacher) => {
+        res.redirect("/api/teachers/getAll");
+    })
+    .catch(err => {
+        res.status(500).json({ 
+            message: "An error has occurred",
+            error: err
+        });
+    });
+};
+
+teachersControllers.updateOne = async (req, res) => {
     teachersDaos.updateOne(req.params.teacher_id, req.body)
     .then((updatedTeacher) => {
         if (updatedTeacher) {
-            res.json({
-                message: "Student updated successfully",
-                data: updatedTeacher
-            });
+            res.redirect("/api/teachers/getAll");
         } else {
             res.status(404).json({
-                message: "Student not found"
+                message: "Teacher not found"
             });
         }
     })
@@ -72,26 +68,21 @@ teachersControllers  .updateOne = async (req, res) => {
 
 teachersControllers.deleteOne = async (req, res) => {
     teachersDaos.deleteOne(req.params.teacher_id)
-        .then((deletedTeachers) => {
-            if (deletedTeachers) {
-                res.json({
-                    message: "Student deleted successfully",
-                    data: deletedTeachers
-                });
-            } else {
-                res.status(404).json({
-                    message: "Student not found"
-                });
-            }
-        })
-        .catch(err => {
-            res.status(500).json({
-                message: "An error has occurred",
-                error: err
+    .then((deletedTeacher) => {
+        if (deletedTeacher) {
+            res.redirect("/api/teachers/getAll");
+        } else {
+            res.status(404).json({
+                message: "Teacher not found"
             });
+        }
+    })
+    .catch(err => {
+        res.status(500).json({
+            message: "An error has occurred",
+            error: err
         });
-    
+    });
 };
 
 export default teachersControllers;
-
